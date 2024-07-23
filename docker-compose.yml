@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: smart_project
+      MYSQL_USER: user_smart_project
+      MYSQL_PASSWORD: 12345678
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  app:
+    build: .
+    container_name: smart-project-app
+    ports:
+      - "3000:3000"
+    environment:
+      DB_NAME: smart_project
+      DB_USER: user_smart_project
+      DB_PASS: 12345678
+      DB_HOST: mysql
+      DB_DIALECT: mysql
+      PORT: 3000
+    depends_on:
+      - mysql
+
+volumes:
+  mysql-data:

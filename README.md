@@ -1,2 +1,0 @@
-# smart-project
-Bacck-end

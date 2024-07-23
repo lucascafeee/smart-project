@@ -1,21 +1,28 @@
 {
   "name": "smart-project",
   "version": "1.0.0",
-  "description": "Bacck-end",
+  "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "lint": "eslint .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.20.2",
     "express": "^4.19.2",
     "mysql2": "^3.10.3",
     "sequelize": "^6.37.3"
   },
   "devDependencies": {
-    "eslint": "^9.7.0"
+    "@eslint/js": "^9.7.0",
+    "eslint": "^9.7.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.1",
+    "globals": "^15.8.0",
+    "nodemon": "^3.1.4"
   }
 }

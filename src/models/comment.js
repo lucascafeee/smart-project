@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const { sequelize } = require('./index');
+const { sequelize } = require('../config/database');
 const Post = require('./post');
 
 const Comment = sequelize.define('Comment', {
@@ -15,8 +15,5 @@ const Comment = sequelize.define('Comment', {
     },
   },
 });
-
-Post.hasMany(Comment, { as: 'comments', foreignKey: 'postId' });
-Comment.belongsTo(Post, { foreignKey: 'postId' });
 
 module.exports = Comment;

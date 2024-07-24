@@ -1,25 +1,23 @@
 const { Comment } = require('../models');
+const asyncHandler = require('../middlewares/asyncHandler');
+const validate = require('../middlewares/validate');
+const { commentSchema } = require('../validations/commentValidation');
+const logger = require('../logger');
 
-const createComment = async (req, res) => {
-  try {
-    const comment = await Comment.create(req.body);
-    res.status(201).json(comment);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-};
+const createComment = asyncHandler(async (req, res) => {
+  const comment = await Comment.create(req.body);
+  logger.info('Comment created', { comment });
+  res.status(201).json(comment);
+});
 
-const deleteComment = async (req, res) => {
-  try {
-    const { id } = req.params;
-    await Comment.destroy({ where: { id } });
-    res.status(204).send();
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-};
+const deleteComment = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  await Comment.destroy({ where: { id } });
+  logger.info(`Comment deleted: ${id}`);
+  res.status(204).send();
+});
 
 module.exports = {
-  createComment,
+  createComment: [validate(commentSchema), createComment],
   deleteComment,
 };

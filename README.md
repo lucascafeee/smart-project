@@ -31,6 +31,9 @@ Este projeto consiste na implementação de uma API RESTful utilizando Node.js q
     ```sh
     npm install
     ```
+## Configuração do Ambiente
+
+Certifique-se de ter Docker e Docker Compose instalados. Caso queira usar o docker
 
 ## Uso
 
@@ -77,7 +80,8 @@ Este projeto consiste na implementação de uma API RESTful utilizando Node.js q
 2. **Docker (Opcional):**
     - **Dockerizar o ambiente:** Utilize o arquivo `Dockerfile` e `docker-compose.yml` fornecidos para configurar o ambiente Docker.
     - **Substituir MySQL por MongoDB:** Caso deseje utilizar o MongoDB, ajuste as configurações conforme necessário.
-
+    - **docker-compose up --build**: Construir e iniciar os containers;
+    - **docker-compose down**: Parar os containers;
 ## Documentação
 
 - **Endpoints:**
@@ -132,6 +136,24 @@ Este projeto consiste na implementação de uma API RESTful utilizando Node.js q
 - **Adicionar um comentário a um post:**
     ```sh
     curl -X POST http://localhost:3000/posts/1/comments -d '{"content": "Comentário"}' -H "Content-Type: application/json"
+    ```
+
+- **Atualizar um post:**
+    ```sh
+    curl -X PUT http://localhost:3000/posts/1 -d '{
+    "title": "Título Atualizado", 
+    "content": "Conteúdo atualizado"}' -H 
+    "Content-Type: application/json"
+    ```
+
+- **Apagar um post:**
+    ```sh
+    curl -X DELETE http://localhost:3000/posts/1
+    ```
+
+- **Apagar um comentário de um post:**
+    ```sh
+    curl -X DELETE http://localhost:3000/posts/1/comments/1
     ```
 
 

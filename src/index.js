@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-const { authenticateDB, sequelize } = require('./config/database');
+const {authenticateDB, sequelize} = require('./config/database');
 const postRoutes = require('./routes/posts');
 const commentRoutes = require('./routes/comments');
 const errorHandler = require('./middlewares/errorHandler');
@@ -17,9 +17,9 @@ app.use('/comments', commentRoutes);
 app.use(errorHandler);
 
 authenticateDB().then(() => {
-  sequelize.sync().then(() => {
-    app.listen(PORT, () => {
-      logger.info(`Server is running on port ${PORT}`);
+    sequelize.sync().then(() => {
+        app.listen(PORT, () => {
+            logger.info(`Server is running on port ${PORT}`);
+        });
     });
-  });
 });

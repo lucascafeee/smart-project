@@ -14,8 +14,6 @@ Este projeto consiste na implementação de uma API RESTful utilizando Node.js q
 - [Configuração](#configuração)
 - [Documentação](#documentação)
 - [Exemplos](#exemplos)
-- [Contribuidores](#contribuidores)
-- [Licença](#licença)
 
 ## Instruções de Instalação
 

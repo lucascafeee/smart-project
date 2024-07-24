@@ -11,7 +11,7 @@ const createComment = async (req, res) => {
 
 const deleteComment = async (req, res) => {
   try {
-    const id = req.params.id;
+    const { id } = req.params;
     await Comment.destroy({ where: { id } });
     res.status(204).send();
   } catch (error) {
@@ -21,5 +21,5 @@ const deleteComment = async (req, res) => {
 
 module.exports = {
   createComment,
-  deleteComment
+  deleteComment,
 };

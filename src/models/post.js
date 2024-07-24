@@ -4,12 +4,12 @@ const { sequelize } = require('./index');
 const Post = sequelize.define('Post', {
   title: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
   },
   content: {
     type: DataTypes.TEXT,
-    allowNull: false
-  }
+    allowNull: false,
+  },
 });
 
 module.exports = Post;

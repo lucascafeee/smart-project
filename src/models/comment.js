@@ -5,15 +5,15 @@ const Post = require('./post');
 const Comment = sequelize.define('Comment', {
   content: {
     type: DataTypes.TEXT,
-    allowNull: false
+    allowNull: false,
   },
   postId: {
     type: DataTypes.INTEGER,
     references: {
       model: Post,
-      key: 'id'
-    }
-  }
+      key: 'id',
+    },
+  },
 });
 
 Post.hasMany(Comment, { as: 'comments', foreignKey: 'postId' });

@@ -20,7 +20,7 @@ const getAllPosts = async (req, res) => {
 
 const updatePost = async (req, res) => {
   try {
-    const id = req.params.id;
+    const { id } = req.params;
     const [updated] = await Post.update(req.body, { where: { id } });
     if (updated) {
       const updatedPost = await Post.findOne({ where: { id } });
@@ -35,7 +35,7 @@ const updatePost = async (req, res) => {
 
 const deletePost = async (req, res) => {
   try {
-    const id = req.params.id;
+    const { id } = req.params;
     await Post.destroy({ where: { id } });
     res.status(204).send();
   } catch (error) {
@@ -47,5 +47,5 @@ module.exports = {
   createPost,
   getAllPosts,
   updatePost,
-  deletePost
+  deletePost,
 };
